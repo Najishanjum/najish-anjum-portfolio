@@ -1,9 +1,9 @@
 import { Navigation } from "@/components/Navigation";
 import { Hero } from "@/components/Hero";
 import { About } from "@/components/About";
-import { Skills } from "@/components/Skills";
 import { Projects } from "@/components/Projects";
 import { TechStack } from "@/components/TechStack";
+import { Hackathons } from "@/components/Hackathons";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 
@@ -13,9 +13,9 @@ const Index = () => {
       <Navigation />
       <Hero />
       <About />
-      <Skills />
       <Projects />
       <TechStack />
+      <Hackathons />
       <Contact />
       <Footer />
     </div>
