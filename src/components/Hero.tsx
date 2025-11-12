@@ -8,7 +8,7 @@ const roles = [
   "Full Stack Enthusiast",
   "Tech Innovator",
   "Hackathon Winner",
-  "Team ILM Tech Member"
+  "Team Lead Team ILM Tech"
 ];
 
 export const Hero = () => {
@@ -58,7 +58,7 @@ export const Hero = () => {
             className="flex items-center gap-2 text-muted-foreground font-mono text-sm"
           >
             <Terminal className="w-4 h-4 text-primary" />
-            <span className="text-primary">najish@portfolio</span>
+            <span className="text-primary">najishanjumportfolio.tech</span>
             <span>:</span>
             <span className="text-neon-blue">~</span>
             <span>$</span>

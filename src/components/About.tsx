@@ -32,11 +32,35 @@ export const About = () => {
               className="relative"
             >
               <div className="relative w-64 h-64 mx-auto">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary to-secondary rounded-2xl blur-xl opacity-50 animate-pulse" />
-                <img
+                <motion.div 
+                  animate={{ 
+                    scale: [1, 1.1, 1],
+                    rotate: [0, 5, -5, 0]
+                  }}
+                  transition={{ 
+                    duration: 8,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                  className="absolute inset-0 bg-gradient-to-br from-primary to-secondary rounded-2xl blur-xl opacity-50"
+                />
+                <motion.img
                   src={profileImage}
                   alt="Najish Anjum"
                   className="relative w-full h-full object-cover rounded-2xl border-2 border-primary/50 shadow-2xl"
+                  whileHover={{ 
+                    scale: 1.05,
+                    rotate: 3,
+                    transition: { duration: 0.3 }
+                  }}
+                  animate={{
+                    y: [0, -10, 0]
+                  }}
+                  transition={{
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
                 />
               </div>
             </motion.div>
@@ -56,7 +80,7 @@ export const About = () => {
               </p>
 
               <p className="text-lg text-muted-foreground leading-relaxed">
-                As a member of <span className="text-secondary font-semibold">Team ILM Tech</span>, 
+                As a <span className="text-secondary font-semibold">Founder & Team Lead of Team ILM Tech</span>, 
                 I've had the privilege of working on cutting-edge projects and winning hackathons. 
                 I specialize in full-stack development and AI/ML, combining both to create 
                 intelligent, user-friendly applications.
