@@ -1,0 +1,56 @@
+import { Github, Linkedin, Twitter, Heart } from "lucide-react";
+
+export const Footer = () => {
+  return (
+    <footer className="border-t border-border/50 py-12 px-4">
+      <div className="max-w-6xl mx-auto">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+          {/* Logo & Copyright */}
+          <div className="flex flex-col items-center md:items-start gap-2">
+            <div className="font-mono text-lg font-bold">
+              <span className="text-primary">&lt;</span>
+              <span className="text-gradient">NA</span>
+              <span className="text-primary">/&gt;</span>
+            </div>
+            <p className="text-sm text-muted-foreground font-mono flex items-center gap-1">
+              Made with <Heart className="w-4 h-4 text-red-500 fill-red-500" /> by Najish Anjum © 2025
+            </p>
+          </div>
+
+          {/* Social Links */}
+          <div className="flex gap-4">
+            <a
+              href="https://github.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 rounded-lg bg-card/50 border border-border/50 flex items-center justify-center hover:border-primary/50 hover:bg-primary/10 transition-all duration-300 group"
+            >
+              <Github className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
+            </a>
+            <a
+              href="https://linkedin.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 rounded-lg bg-card/50 border border-border/50 flex items-center justify-center hover:border-primary/50 hover:bg-primary/10 transition-all duration-300 group"
+            >
+              <Linkedin className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
+            </a>
+            <a
+              href="https://twitter.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 rounded-lg bg-card/50 border border-border/50 flex items-center justify-center hover:border-primary/50 hover:bg-primary/10 transition-all duration-300 group"
+            >
+              <Twitter className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
+            </a>
+          </div>
+
+          {/* Terminal Command */}
+          <div className="font-mono text-sm text-muted-foreground">
+            <span className="text-primary">$</span> Thanks for visiting!
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+};
