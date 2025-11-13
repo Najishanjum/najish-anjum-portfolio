@@ -1,4 +1,4 @@
-import { Github, Linkedin, Twitter, Heart } from "lucide-react";
+import { Github, Linkedin, Twitter, Code2 } from "lucide-react";
 
 export const Footer = () => {
   return (
@@ -13,7 +13,7 @@ export const Footer = () => {
               <span className="text-primary">/&gt;</span>
             </div>
             <p className="text-sm text-muted-foreground font-mono flex items-center gap-1">
-              Made with <Heart className="w-4 h-4 text-red-500 fill-red-500" /> by Najish Anjum © 2025
+              <Code2 className="w-4 h-4 text-primary" /> Developed by Najish Anjum © 2025
             </p>
           </div>
 
@@ -45,10 +45,6 @@ export const Footer = () => {
             </a>
           </div>
 
-          {/* Terminal Command */}
-          <div className="font-mono text-sm text-muted-foreground">
-            <span className="text-primary">$</span> Thanks for visiting!
-          </div>
         </div>
       </div>
     </footer>
