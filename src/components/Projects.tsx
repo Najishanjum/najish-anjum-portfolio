@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ExternalLink, Github } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import shopGenieBg from "@/assets/shopgenie-bg.webp";
 
 const projects = [
   {
@@ -22,7 +23,8 @@ const projects = [
     description: "Smart e-commerce with AI recommendations and personalized shopping.",
     tags: ["Django", "React", "PostgreSQL", "ML"],
     color: "from-blue-500/20 to-cyan-500/20",
-    borderColor: "border-blue-500/50"
+    borderColor: "border-blue-500/50",
+    bgImage: shopGenieBg
   },
   {
     title: "Educational Performance Tracker",
@@ -73,7 +75,12 @@ export const Projects = () => {
                   scale: 1.02,
                   transition: { duration: 0.3 }
                 }}
-                className={`group p-6 rounded-lg bg-gradient-to-br ${project.color} border ${project.borderColor} backdrop-blur-sm hover:shadow-xl hover:shadow-primary/20 transition-all duration-300`}
+                className={`group p-6 rounded-lg bg-gradient-to-br ${project.color} border ${project.borderColor} backdrop-blur-sm hover:shadow-xl hover:shadow-primary/20 transition-all duration-300 relative overflow-hidden`}
+                style={project.bgImage ? {
+                  backgroundImage: `linear-gradient(to bottom right, hsl(var(--background) / 0.85), hsl(var(--background) / 0.9)), url(${project.bgImage})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center'
+                } : {}}
               >
                 <div className="space-y-4">
                   <h3 className="text-2xl font-bold font-mono text-foreground group-hover:text-primary transition-colors">
