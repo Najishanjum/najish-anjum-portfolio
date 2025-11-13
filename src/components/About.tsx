@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Code2, Sparkles, Trophy } from "lucide-react";
+import { Code2, Sparkles } from "lucide-react";
 import profileImage from "@/assets/profile.jpg";
 
 export const About = () => {
@@ -74,16 +74,13 @@ export const About = () => {
               className="space-y-6"
             >
               <p className="text-lg text-muted-foreground leading-relaxed">
-                I'm a <span className="text-primary font-semibold">B.Tech AI/ML student</span> with 
-                a passion for creating innovative solutions that make a difference. My journey in tech 
-                has been driven by curiosity and a desire to push boundaries.
+                I'm Najish Anjum, a <span className="text-primary font-semibold">B.Tech student in Computer Science (AI & ML)</span> with 
+                a deep passion for innovation, problem-solving, and impactful technology. My journey in tech has always been fueled by curiosity and a drive to turn creative ideas into intelligent, real-world solutions.
               </p>
 
               <p className="text-lg text-muted-foreground leading-relaxed">
-                As a <span className="text-secondary font-semibold">Founder & Team Lead of Team ILM Tech</span>, 
-                I've had the privilege of working on cutting-edge projects and winning hackathons. 
-                I specialize in full-stack development and AI/ML, combining both to create 
-                intelligent, user-friendly applications.
+                As the <span className="text-secondary font-semibold">Founder & Team Lead of Team ILM Tech</span>, 
+                I've led and collaborated on multiple AI-driven and full-stack projects, pushing boundaries across web development, machine learning, and intelligent automation.
               </p>
 
               {/* Highlights */}
@@ -104,16 +101,6 @@ export const About = () => {
                     <h3 className="font-mono font-semibold text-foreground mb-1">AI/ML Enthusiast</h3>
                     <p className="text-sm text-muted-foreground">
                       Building intelligent systems with TensorFlow and Python
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3 p-4 rounded-lg bg-card/50 border border-border/50 backdrop-blur-sm">
-                  <Trophy className="w-6 h-6 text-neon-pink flex-shrink-0 mt-1" />
-                  <div>
-                    <h3 className="font-mono font-semibold text-foreground mb-1">Hackathon Winner</h3>
-                    <p className="text-sm text-muted-foreground">
-                      Multiple victories in competitive tech challenges
                     </p>
                   </div>
                 </div>

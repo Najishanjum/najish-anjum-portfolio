@@ -5,35 +5,35 @@ import { Button } from "@/components/ui/button";
 const projects = [
   {
     title: "Grow Plus",
-    description: "An innovative agricultural solution leveraging AI to optimize crop management and increase yields. Features real-time monitoring and predictive analytics.",
+    description: "AI-powered agricultural solution for crop optimization and yield prediction.",
     tags: ["AI/ML", "Python", "TensorFlow", "React"],
     color: "from-green-500/20 to-emerald-500/20",
     borderColor: "border-green-500/50"
   },
   {
     title: "CareCall24on",
-    description: "24/7 healthcare emergency response system with AI-powered triage and instant medical assistance. Connects patients with healthcare providers in real-time.",
+    description: "24/7 healthcare emergency response with AI triage and instant assistance.",
     tags: ["React", "Node.js", "Firebase", "AI"],
     color: "from-red-500/20 to-pink-500/20",
     borderColor: "border-red-500/50"
   },
   {
     title: "ShopGenie",
-    description: "Smart e-commerce platform with AI-driven product recommendations and personalized shopping experiences. Revolutionizing online retail.",
+    description: "Smart e-commerce with AI recommendations and personalized shopping.",
     tags: ["Django", "React", "PostgreSQL", "ML"],
     color: "from-blue-500/20 to-cyan-500/20",
     borderColor: "border-blue-500/50"
   },
   {
     title: "Educational Performance Tracker",
-    description: "Comprehensive analytics platform for tracking and improving student performance. Features predictive modeling and personalized learning paths.",
+    description: "Analytics platform for student performance with predictive modeling.",
     tags: ["React", "Python", "MySQL", "Data Viz"],
     color: "from-purple-500/20 to-indigo-500/20",
     borderColor: "border-purple-500/50"
   },
   {
     title: "Mental Health AI Detector",
-    description: "AI-powered mental health screening tool using NLP and sentiment analysis. Provides early detection and support recommendations.",
+    description: "NLP-powered mental health screening with early detection support.",
     tags: ["NLP", "TensorFlow", "React", "Express"],
     color: "from-teal-500/20 to-cyan-500/20",
     borderColor: "border-teal-500/50"
@@ -68,7 +68,12 @@ export const Projects = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className={`group p-6 rounded-lg bg-gradient-to-br ${project.color} border ${project.borderColor} backdrop-blur-sm hover:scale-[1.02] transition-all duration-300`}
+                whileHover={{ 
+                  y: -8,
+                  scale: 1.02,
+                  transition: { duration: 0.3 }
+                }}
+                className={`group p-6 rounded-lg bg-gradient-to-br ${project.color} border ${project.borderColor} backdrop-blur-sm hover:shadow-xl hover:shadow-primary/20 transition-all duration-300`}
               >
                 <div className="space-y-4">
                   <h3 className="text-2xl font-bold font-mono text-foreground group-hover:text-primary transition-colors">

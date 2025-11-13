@@ -143,8 +143,8 @@ export const Contact = () => {
           >
             <p className="text-muted-foreground font-mono">
               Or reach out directly at{" "}
-              <a href="mailto:najish.anjum@example.com" className="text-primary hover:underline">
-                najish.anjum@example.com
+              <a href="mailto:najishanjum058@gmail.com" className="text-primary hover:underline">
+                najishanjum058@gmail.com
               </a>
             </p>
           </motion.div>

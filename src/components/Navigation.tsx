@@ -2,13 +2,14 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const navItems = [
   { label: "About", href: "#about" },
-  { label: "Skills", href: "#skills" },
   { label: "Projects", href: "#projects" },
-  { label: "Tech Stack", href: "#techstack" },
-  { label: "Contact", href: "#contact" }
+  { label: "Tech Stack", href: "#tech-stack" },
+  { label: "Hackathons", href: "/hackathons" },
+  { label: "Contact", href: "#contact" },
 ];
 
 export const Navigation = () => {
@@ -24,6 +25,12 @@ export const Navigation = () => {
   }, []);
 
   const scrollToSection = (href: string) => {
+    // If it's a route (starts with /), don't scroll
+    if (href.startsWith('/')) {
+      setIsMobileMenuOpen(false);
+      return;
+    }
+    
     const element = document.querySelector(href);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
@@ -59,23 +66,27 @@ export const Navigation = () => {
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-8">
-              {navItems.map((item, index) => (
-                <motion.a
-                  key={item.label}
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: index * 0.1 }}
-                  href={item.href}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    scrollToSection(item.href);
-                  }}
-                  className="font-mono text-sm text-muted-foreground hover:text-primary transition-colors relative group"
-                >
-                  {item.label}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
-                </motion.a>
-              ))}
+              {navItems.map((item) => 
+                item.href.startsWith('/') ? (
+                  <Link
+                    key={item.label}
+                    to={item.href}
+                    className="text-muted-foreground hover:text-primary transition-colors font-mono text-sm relative group"
+                  >
+                    {item.label}
+                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
+                  </Link>
+                ) : (
+                  <button
+                    key={item.label}
+                    onClick={() => scrollToSection(item.href)}
+                    className="text-muted-foreground hover:text-primary transition-colors font-mono text-sm relative group"
+                  >
+                    {item.label}
+                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
+                  </button>
+                )
+              )}
             </div>
 
             {/* Mobile Menu Button */}
@@ -105,22 +116,35 @@ export const Navigation = () => {
           className="fixed inset-0 z-40 bg-background/95 backdrop-blur-lg md:hidden"
         >
           <div className="flex flex-col items-center justify-center h-full gap-8">
-            {navItems.map((item, index) => (
-              <motion.a
-                key={item.label}
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.3, delay: index * 0.1 }}
-                href={item.href}
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToSection(item.href);
-                }}
-                className="font-mono text-2xl text-muted-foreground hover:text-primary transition-colors"
-              >
-                {item.label}
-              </motion.a>
-            ))}
+            {navItems.map((item, index) => 
+              item.href.startsWith('/') ? (
+                <motion.div
+                  key={item.label}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.3, delay: index * 0.1 }}
+                >
+                  <Link
+                    to={item.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="font-mono text-2xl text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    {item.label}
+                  </Link>
+                </motion.div>
+              ) : (
+                <motion.button
+                  key={item.label}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.3, delay: index * 0.1 }}
+                  onClick={() => scrollToSection(item.href)}
+                  className="font-mono text-2xl text-muted-foreground hover:text-primary transition-colors"
+                >
+                  {item.label}
+                </motion.button>
+              )
+            )}
           </div>
         </motion.div>
       )}
