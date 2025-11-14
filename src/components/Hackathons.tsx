@@ -1,5 +1,10 @@
 import { motion } from "framer-motion";
 import { Trophy, Calendar, MapPin, Users } from "lucide-react";
+import techclasherBg from "@/assets/techclasher-bg.png";
+import nasaBg from "@/assets/nasa-bg.png";
+import paranoxBg from "@/assets/paranox-bg.png";
+import kodekaleshBg from "@/assets/kodekalesh-bg.png";
+import nextgenBg from "@/assets/nextgen-bg.png";
 
 const hackathons = [
   {
@@ -10,7 +15,8 @@ const hackathons = [
     type: "hackathon",
     date: "October 06 – 09, 2025",
     badge: "Team Lead Team ILM Tech",
-    color: "from-neon-cyan to-neon-blue"
+    color: "from-neon-cyan to-neon-blue",
+    bgImage: techclasherBg
   },
   {
     title: "NASA Space App Challenge – Jabalpur Edition",
@@ -19,7 +25,8 @@ const hackathons = [
     status: "Completed",
     type: "hackathon",
     badge: "Local Event",
-    color: "from-neon-blue to-neon-purple"
+    color: "from-neon-blue to-neon-purple",
+    bgImage: nasaBg
   },
   {
     title: "Paranox 2.0 Hackathon",
@@ -28,7 +35,8 @@ const hackathons = [
     status: "Completed",
     type: "hackathon",
     badge: "Recent",
-    color: "from-neon-purple to-neon-pink"
+    color: "from-neon-purple to-neon-pink",
+    bgImage: paranoxBg
   },
   {
     title: "CodeSpark – 72 Hours Coding Challenge",
@@ -45,7 +53,8 @@ const hackathons = [
     description: "A competitive hackathon involving intense problem-solving and innovative product creation.",
     status: "Ongoing",
     type: "hackathon",
-    color: "from-neon-cyan to-neon-purple"
+    color: "from-neon-cyan to-neon-purple",
+    bgImage: kodekaleshBg
   },
   {
     title: "Next Gen Hackathon",
@@ -53,7 +62,8 @@ const hackathons = [
     description: "A hackathon focused on building the next generation of AI-based solutions for real-world problems.",
     status: "Ongoing",
     type: "hackathon",
-    color: "from-neon-blue to-neon-pink"
+    color: "from-neon-blue to-neon-pink",
+    bgImage: nextgenBg
   }
 ];
 
@@ -85,7 +95,17 @@ export const Hackathons = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="group relative p-6 rounded-lg bg-card/50 border border-border/50 backdrop-blur-sm hover:border-primary/50 transition-all duration-300"
+                whileHover={{
+                  y: -8,
+                  scale: 1.02,
+                  transition: { duration: 0.3 }
+                }}
+                className="group relative p-6 rounded-lg bg-card/50 border border-border/50 backdrop-blur-sm hover:border-primary/50 transition-all duration-300 overflow-hidden"
+                style={hackathon.bgImage ? {
+                  backgroundImage: `linear-gradient(to bottom right, hsl(var(--background) / 0.92), hsl(var(--background) / 0.95)), url(${hackathon.bgImage})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center'
+                } : {}}
               >
                 {/* Status Badge */}
                 <div className="absolute top-4 right-4">
