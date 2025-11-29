@@ -1,13 +1,22 @@
 import { motion } from "framer-motion";
-import { MapPin, Calendar, Briefcase } from "lucide-react";
+import { MapPin, Calendar, Briefcase, ExternalLink } from "lucide-react";
 
 import ilmTechLogo from "@/assets/ilm-tech-logo.jpg";
+import ilmTechProfile from "@/assets/ilm-tech-profile.jpg";
 import ajinavaEdgeLogo from "@/assets/ajinava-edge-logo.jpg";
 import paranoxLogo from "@/assets/paranox-logo.png";
 import techfestLogo from "@/assets/techfest-logo.png";
 import gssocLogo from "@/assets/gssoc-logo.png";
 import moodIndigoLogo from "@/assets/mood-indigo-logo.png";
 import osciLogo from "@/assets/osci-logo.png";
+import googleCloudLogo from "@/assets/google-cloud-logo.png";
+import googleCloudImg1 from "@/assets/google-cloud-img1.jpg";
+import googleCloudImg2 from "@/assets/google-cloud-img2.jpg";
+import hacktoberfestLogo from "@/assets/hacktoberfest-logo.png";
+import hacktoberfestBadges1 from "@/assets/hacktoberfest-badges1.png";
+import hacktoberfestBadges2 from "@/assets/hacktoberfest-badges2.png";
+import hacktoberfestSwag from "@/assets/hacktoberfest-swag.jpg";
+import hacktoberfestSelfie from "@/assets/hacktoberfest-selfie.jpg";
 
 const experiences = [
   {
@@ -20,17 +29,8 @@ const experiences = [
     description: "",
     skills: [],
     logo: ilmTechLogo,
-  },
-  {
-    title: "Campus Ambassador – Paranox 2.0 Hackathon 2025",
-    company: "TechX Ninjas",
-    type: "Part-time",
-    duration: "Sep 2025 – Present",
-    length: "3 mos",
-    location: "",
-    description: "Representing ParanoX 2.0 Hackathon, promoting registrations, engaging students, and fostering innovation while enhancing leadership.",
-    skills: [],
-    logo: paranoxLogo,
+    link: "https://www.linkedin.com/company/team-ilm-tech/",
+    images: [ilmTechProfile],
   },
   {
     title: "Co-Founder",
@@ -42,6 +42,21 @@ const experiences = [
     description: "",
     skills: [],
     logo: ajinavaEdgeLogo,
+    link: "https://www.instagram.com/ajinava.edge?igsh=MXNrNXpoOWpqcDBnaQ==",
+    images: [],
+  },
+  {
+    title: "Campus Ambassador – Paranox 2.0 Hackathon 2025",
+    company: "TechX Ninjas",
+    type: "Part-time",
+    duration: "Sep 2025 – Present",
+    length: "3 mos",
+    location: "",
+    description: "Representing ParanoX 2.0 Hackathon, promoting registrations, engaging students, and fostering innovation while enhancing leadership.",
+    skills: [],
+    logo: paranoxLogo,
+    link: "",
+    images: [],
   },
   {
     title: "College Ambassador",
@@ -53,6 +68,8 @@ const experiences = [
     description: "College Ambassador for Asia's largest science & technology festival.",
     skills: ["Leadership", "Event Management"],
     logo: techfestLogo,
+    link: "",
+    images: [],
   },
   {
     title: "Open-Source Contributor",
@@ -64,6 +81,34 @@ const experiences = [
     description: "Worked on open-source projects, collaborating with mentors, fixing bugs, adding features, improving documentation, Git & GitHub proficiency.",
     skills: [],
     logo: gssocLogo,
+    link: "",
+    images: [],
+  },
+  {
+    title: "Google Cloud Arcade Facilitator – Cohort 1 (2025)",
+    company: "Google Cloud Arcade Program",
+    type: "Training Cohort",
+    duration: "2025",
+    length: "",
+    location: "",
+    description: "Selected as a participant in the Google Cloud Arcade Facilitator Program. Completed the Arcade Trooper Tier – Campaign 2025 and achieved Milestone 3, including hands-on labs and cloud skill badges.",
+    skills: ["Google Cloud", "Cloud Computing"],
+    logo: googleCloudLogo,
+    link: "",
+    images: [googleCloudImg1, googleCloudImg2],
+  },
+  {
+    title: "Contributor — Hacktoberfest 2025",
+    company: "Powered by DigitalOcean & MLH",
+    type: "Open-source Contribution Program",
+    duration: "Oct 1, 2025 – Oct 30, 2025",
+    length: "1 mo",
+    location: "Global",
+    description: "Participated in Hacktoberfest 2025 as an open-source contributor, submitting quality PRs, collaborating with maintainers, and contributing to community-driven projects.",
+    skills: ["Open Source", "Git", "GitHub"],
+    logo: hacktoberfestLogo,
+    link: "",
+    images: [hacktoberfestBadges1, hacktoberfestBadges2, hacktoberfestSwag, hacktoberfestSelfie],
   },
   {
     title: "Indigo Squad Member",
@@ -75,6 +120,8 @@ const experiences = [
     description: "",
     skills: ["Leadership", "Social Media Marketing"],
     logo: moodIndigoLogo,
+    link: "",
+    images: [],
   },
   {
     title: "Contributor 2025",
@@ -86,6 +133,8 @@ const experiences = [
     description: "",
     skills: ["Open Source", "UI/UX Enhancement", "+2 skills"],
     logo: osciLogo,
+    link: "",
+    images: [],
   },
 ];
 
@@ -145,14 +194,26 @@ export const Experience = () => {
                       <h3 className="text-lg font-semibold text-foreground">
                         {exp.title}
                       </h3>
-                      <p className="text-primary font-medium">
-                        {exp.company}
-                        {exp.type && (
-                          <span className="text-muted-foreground text-sm ml-2">
-                            · {exp.type}
-                          </span>
+                      <div className="flex items-center gap-2">
+                        <p className="text-primary font-medium">
+                          {exp.company}
+                          {exp.type && (
+                            <span className="text-muted-foreground text-sm ml-2">
+                              · {exp.type}
+                            </span>
+                          )}
+                        </p>
+                        {exp.link && (
+                          <a
+                            href={exp.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-primary hover:text-primary/80 transition-colors"
+                          >
+                            <ExternalLink className="w-4 h-4" />
+                          </a>
                         )}
-                      </p>
+                      </div>
                     </div>
                   </div>
 
@@ -191,6 +252,30 @@ export const Experience = () => {
                         >
                           {skill}
                         </span>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Images Gallery */}
+                  {exp.images && exp.images.length > 0 && (
+                    <div className={`mt-4 pt-4 border-t border-border/30 grid gap-3 ${
+                      exp.images.length === 1 ? 'grid-cols-1' : 
+                      exp.images.length === 2 ? 'grid-cols-2' : 
+                      exp.images.length === 3 ? 'grid-cols-3' : 
+                      'grid-cols-2 md:grid-cols-4'
+                    }`}>
+                      {exp.images.map((img, imgIndex) => (
+                        <motion.div
+                          key={imgIndex}
+                          whileHover={{ scale: 1.05 }}
+                          className="rounded-lg overflow-hidden border border-border/30"
+                        >
+                          <img
+                            src={img}
+                            alt={`${exp.company} - ${imgIndex + 1}`}
+                            className="w-full h-auto object-cover"
+                          />
+                        </motion.div>
                       ))}
                     </div>
                   )}
