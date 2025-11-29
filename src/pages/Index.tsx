@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Navigation } from "@/components/Navigation";
 import { Hero } from "@/components/Hero";
 import { About } from "@/components/About";
@@ -5,18 +6,24 @@ import { Projects } from "@/components/Projects";
 import { TechStack } from "@/components/TechStack";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
+import { IntroAnimation } from "@/components/IntroAnimation";
 
 const Index = () => {
+  const [showIntro, setShowIntro] = useState(true);
+
   return (
-    <div className="min-h-screen">
-      <Navigation />
-      <Hero />
-      <About />
-      <Projects />
-      <TechStack />
-      <Contact />
-      <Footer />
-    </div>
+    <>
+      {showIntro && <IntroAnimation onComplete={() => setShowIntro(false)} />}
+      <div className={`min-h-screen ${showIntro ? 'opacity-0' : 'opacity-100'} transition-opacity duration-500`}>
+        <Navigation />
+        <Hero />
+        <About />
+        <Projects />
+        <TechStack />
+        <Contact />
+        <Footer />
+      </div>
+    </>
   );
 };
 
