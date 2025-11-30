@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { Navigation } from "@/components/Navigation";
 import { Hero } from "@/components/Hero";
 import { About } from "@/components/About";
@@ -11,6 +12,19 @@ import { IntroAnimation } from "@/components/IntroAnimation";
 
 const Index = () => {
   const [showIntro, setShowIntro] = useState(true);
+  const location = useLocation();
+
+  // Handle hash navigation from other pages
+  useEffect(() => {
+    if (location.hash && !showIntro) {
+      const element = document.querySelector(location.hash);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+      }
+    }
+  }, [location.hash, showIntro]);
 
   return (
     <>

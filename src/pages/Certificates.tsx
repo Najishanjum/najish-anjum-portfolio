@@ -15,6 +15,11 @@ import certGdgGithub from "@/assets/cert-gdg-github.jpg";
 import certGdgIntro from "@/assets/cert-gdg-intro.jpg";
 import certPixelRiot from "@/assets/cert-pixel-riot.png";
 import certGemini from "@/assets/cert-gemini.jpg";
+import certOsci from "@/assets/cert-osci.jpg";
+import certTataCrucible from "@/assets/cert-tata-crucible.png";
+import certInfosys from "@/assets/cert-infosys.jpg";
+import certAwsForage from "@/assets/cert-aws-forage.jpg";
+import certCodespark from "@/assets/cert-codespark.jpg";
 
 interface Certificate {
   id: number;
@@ -95,6 +100,41 @@ const certificates: Certificate[] = [
     issuer: "Google for Education",
     date: "October 17, 2025",
     image: certGemini,
+  },
+  {
+    id: 11,
+    title: "Open Source Connect India 2025",
+    issuer: "NexFellow & Julep",
+    date: "August 15-30, 2025",
+    image: certOsci,
+  },
+  {
+    id: 12,
+    title: "TATA Crucible Campus Quiz 2025",
+    issuer: "Tata Group / Unstop",
+    date: "2025",
+    image: certTataCrucible,
+  },
+  {
+    id: 13,
+    title: "Cloud Technologies Course Completion",
+    issuer: "Infosys Springboard",
+    date: "March 3, 2025",
+    image: certInfosys,
+  },
+  {
+    id: 14,
+    title: "AWS Solutions Architecture Job Simulation",
+    issuer: "Forage / AWS",
+    date: "August 30, 2025",
+    image: certAwsForage,
+  },
+  {
+    id: 15,
+    title: "CodeSpark – 72 Hour Build Challenge",
+    issuer: "Developer Community, GEC Siwan",
+    date: "2025",
+    image: certCodespark,
   },
 ];
 
@@ -249,7 +289,7 @@ const Certificates = () => {
     let currentPosition = scrollPosition;
 
     const animate = () => {
-      currentPosition += 1; // Speed: 1px per frame (~60px/sec at 60fps)
+      currentPosition += 2.5; // Speed: 2.5px per frame (~150px/sec at 60fps) - faster scroll
       
       if (currentPosition >= scrollWidth) {
         currentPosition = 0;

@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { Menu, X, Github, Linkedin } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 const navItems = [
   { label: "About", href: "#about" },
@@ -161,6 +161,8 @@ const MagneticSocialIcon = ({
 export const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -172,6 +174,13 @@ export const Navigation = () => {
 
   const scrollToSection = (href: string) => {
     if (href.startsWith('/')) {
+      setIsMobileMenuOpen(false);
+      return;
+    }
+    
+    // If not on homepage, navigate to homepage first then scroll
+    if (location.pathname !== '/') {
+      navigate('/' + href);
       setIsMobileMenuOpen(false);
       return;
     }
@@ -204,10 +213,14 @@ export const Navigation = () => {
           <div className="flex items-center justify-between">
             {/* Logo */}
             <motion.a
-              href="#"
+              href="/"
               onClick={(e) => {
                 e.preventDefault();
-                window.scrollTo({ top: 0, behavior: "smooth" });
+                if (location.pathname !== '/') {
+                  navigate('/');
+                } else {
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }
               }}
               className="font-mono text-xl font-bold relative group"
               whileHover={{ scale: 1.05 }}
