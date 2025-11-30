@@ -17,6 +17,7 @@ import hacktoberfestBadges1 from "@/assets/hacktoberfest-badges1.png";
 import hacktoberfestBadges2 from "@/assets/hacktoberfest-badges2.png";
 import hacktoberfestSwag from "@/assets/hacktoberfest-swag.jpg";
 import hacktoberfestSelfie from "@/assets/hacktoberfest-selfie.jpg";
+import hacktoberfestProfile from "@/assets/hacktoberfest-profile.jpg";
 
 const experiences = [
   {
@@ -108,7 +109,7 @@ const experiences = [
     skills: ["Open Source", "Git", "GitHub"],
     logo: hacktoberfestLogo,
     link: "",
-    images: [hacktoberfestBadges1, hacktoberfestBadges2, hacktoberfestSwag, hacktoberfestSelfie],
+    images: [hacktoberfestProfile, hacktoberfestBadges1, hacktoberfestBadges2, hacktoberfestSwag, hacktoberfestSelfie],
   },
   {
     title: "Indigo Squad Member",
