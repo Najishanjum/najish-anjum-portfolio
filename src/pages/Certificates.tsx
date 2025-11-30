@@ -1,0 +1,372 @@
+import { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { X, ExternalLink, Award, Calendar, Building } from "lucide-react";
+import { Navigation } from "@/components/Navigation";
+import { Footer } from "@/components/Footer";
+
+// Certificate images
+import certHackUp from "@/assets/cert-hack-up.png";
+import certCbitHacktoberfest from "@/assets/cert-cbit-hacktoberfest.png";
+import certParanox from "@/assets/cert-paranox.png";
+import certKodekalesh from "@/assets/cert-kodekalesh.png";
+import certNasa from "@/assets/cert-nasa.jpg";
+import certTechclasher from "@/assets/cert-techclasher.jpg";
+import certGdgGithub from "@/assets/cert-gdg-github.jpg";
+import certGdgIntro from "@/assets/cert-gdg-intro.jpg";
+import certPixelRiot from "@/assets/cert-pixel-riot.png";
+import certGemini from "@/assets/cert-gemini.jpg";
+
+interface Certificate {
+  id: number;
+  title: string;
+  issuer: string;
+  date: string;
+  image: string;
+  verificationLink?: string;
+}
+
+const certificates: Certificate[] = [
+  {
+    id: 1,
+    title: "Hack with UttarPradesh 2025",
+    issuer: "Chandigarh University TBI",
+    date: "November 5, 2025",
+    image: certHackUp,
+  },
+  {
+    id: 2,
+    title: "CBIT Hacktoberfest Hackathon 2025",
+    issuer: "CBIT Open Source Community",
+    date: "October 25-26, 2025",
+    image: certCbitHacktoberfest,
+  },
+  {
+    id: 3,
+    title: "Paranox 2.0 Participation",
+    issuer: "TechXNinjas",
+    date: "August 20 - November 16, 2025",
+    image: certParanox,
+  },
+  {
+    id: 4,
+    title: "KodeKalesh Recognition",
+    issuer: "IDEAKODE",
+    date: "2025",
+    image: certKodekalesh,
+  },
+  {
+    id: 5,
+    title: "NASA Space Apps Challenge - Galactic Problem Solver",
+    issuer: "NASA",
+    date: "October 4-5, 2025",
+    image: certNasa,
+  },
+  {
+    id: 6,
+    title: "Techclasher Hackathon",
+    issuer: "GNIOT Engineering College",
+    date: "October 6-9, 2025",
+    image: certTechclasher,
+  },
+  {
+    id: 7,
+    title: "Mastering GitHub & Open Source",
+    issuer: "Google Developer Groups On Campus GGITS",
+    date: "November 3, 2024",
+    image: certGdgGithub,
+  },
+  {
+    id: 8,
+    title: "GDGC Introductory Session",
+    issuer: "GDGC GGITS",
+    date: "September 17, 2025",
+    image: certGdgIntro,
+  },
+  {
+    id: 9,
+    title: "Pixel Riot Hackathon Qualification",
+    issuer: "Pixel Riot",
+    date: "November 6-16, 2025",
+    image: certPixelRiot,
+  },
+  {
+    id: 10,
+    title: "Gemini Certified Student",
+    issuer: "Google for Education",
+    date: "October 17, 2025",
+    image: certGemini,
+  },
+];
+
+const CertificateCard = ({ 
+  certificate, 
+  onClick,
+  isPaused 
+}: { 
+  certificate: Certificate; 
+  onClick: () => void;
+  isPaused: boolean;
+}) => {
+  return (
+    <motion.div
+      className="flex-shrink-0 w-[300px] md:w-[350px] mx-4 cursor-pointer group"
+      whileHover={{ scale: 1.05, y: -10 }}
+      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+      onClick={onClick}
+    >
+      <div className="relative overflow-hidden rounded-2xl bg-background/40 backdrop-blur-xl border border-border/30 shadow-lg hover:shadow-primary/20 transition-all duration-300">
+        {/* Certificate Image */}
+        <div className="relative aspect-[4/3] overflow-hidden">
+          <img
+            src={certificate.image}
+            alt={certificate.title}
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
+          
+          {/* Hover overlay */}
+          <motion.div 
+            className="absolute inset-0 flex items-center justify-center bg-primary/20 backdrop-blur-sm"
+            initial={{ opacity: 0 }}
+            whileHover={{ opacity: 1 }}
+          >
+            <span className="px-4 py-2 bg-primary text-primary-foreground rounded-full font-medium text-sm">
+              View Certificate
+            </span>
+          </motion.div>
+        </div>
+        
+        {/* Card Content */}
+        <div className="p-4">
+          <h3 className="font-semibold text-foreground text-sm md:text-base line-clamp-2 mb-2">
+            {certificate.title}
+          </h3>
+          <div className="flex items-center gap-2 text-muted-foreground text-xs">
+            <Building className="w-3 h-3" />
+            <span className="truncate">{certificate.issuer}</span>
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
+const CertificateModal = ({ 
+  certificate, 
+  onClose 
+}: { 
+  certificate: Certificate; 
+  onClose: () => void;
+}) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-50 flex items-center justify-center p-4"
+      onClick={onClose}
+    >
+      {/* Backdrop */}
+      <div className="absolute inset-0 bg-background/90 backdrop-blur-xl" />
+      
+      {/* Modal Content */}
+      <motion.div
+        initial={{ scale: 0.9, opacity: 0, y: 20 }}
+        animate={{ scale: 1, opacity: 1, y: 0 }}
+        exit={{ scale: 0.9, opacity: 0, y: 20 }}
+        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+        className="relative max-w-4xl w-full max-h-[90vh] overflow-auto bg-background/60 backdrop-blur-2xl rounded-3xl border border-border/30 shadow-2xl"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Close Button */}
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 z-10 p-2 rounded-full bg-background/80 hover:bg-background border border-border/30 transition-colors"
+        >
+          <X className="w-5 h-5 text-foreground" />
+        </button>
+
+        {/* Certificate Image */}
+        <div className="p-4 md:p-6">
+          <div className="rounded-2xl overflow-hidden shadow-lg">
+            <img
+              src={certificate.image}
+              alt={certificate.title}
+              className="w-full h-auto"
+            />
+          </div>
+        </div>
+
+        {/* Certificate Details */}
+        <div className="p-6 pt-0 space-y-4">
+          <h2 className="text-xl md:text-2xl font-bold text-foreground">
+            {certificate.title}
+          </h2>
+          
+          <div className="flex flex-wrap gap-4">
+            <div className="flex items-center gap-2 text-muted-foreground">
+              <Building className="w-4 h-4 text-primary" />
+              <span>{certificate.issuer}</span>
+            </div>
+            <div className="flex items-center gap-2 text-muted-foreground">
+              <Calendar className="w-4 h-4 text-primary" />
+              <span>{certificate.date}</span>
+            </div>
+          </div>
+
+          {certificate.verificationLink && (
+            <a
+              href={certificate.verificationLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors"
+            >
+              <ExternalLink className="w-4 h-4" />
+              Verify Certificate
+            </a>
+          )}
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+};
+
+const Certificates = () => {
+  const [selectedCertificate, setSelectedCertificate] = useState<Certificate | null>(null);
+  const [isPaused, setIsPaused] = useState(false);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [scrollPosition, setScrollPosition] = useState(0);
+
+  // Auto-scroll animation
+  useEffect(() => {
+    if (isPaused || selectedCertificate) return;
+
+    const scrollContainer = scrollRef.current;
+    if (!scrollContainer) return;
+
+    const scrollWidth = scrollContainer.scrollWidth / 2;
+    let animationFrameId: number;
+    let currentPosition = scrollPosition;
+
+    const animate = () => {
+      currentPosition += 1; // Speed: 1px per frame (~60px/sec at 60fps)
+      
+      if (currentPosition >= scrollWidth) {
+        currentPosition = 0;
+      }
+      
+      scrollContainer.scrollLeft = currentPosition;
+      setScrollPosition(currentPosition);
+      animationFrameId = requestAnimationFrame(animate);
+    };
+
+    animationFrameId = requestAnimationFrame(animate);
+
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, [isPaused, selectedCertificate, scrollPosition]);
+
+  // Double the certificates for infinite scroll effect
+  const duplicatedCertificates = [...certificates, ...certificates];
+
+  return (
+    <div className="min-h-screen bg-background">
+      <Navigation />
+      
+      <main className="pt-32 pb-20">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center px-4 mb-16"
+        >
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <Award className="w-8 h-8 text-primary" />
+            <h1 className="text-4xl md:text-5xl font-bold text-foreground">
+              Certificates
+            </h1>
+          </div>
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            A showcase of my achievements, certifications, and recognitions from various hackathons, workshops, and programs.
+          </p>
+          <p className="text-sm text-muted-foreground/60 mt-4">
+            Hover to pause • Click to view details
+          </p>
+        </motion.div>
+
+        {/* Certificate Carousel */}
+        <div 
+          className="relative overflow-hidden"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
+          {/* Gradient Overlays */}
+          <div className="absolute left-0 top-0 bottom-0 w-20 md:w-40 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-20 md:w-40 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
+          
+          {/* Scrolling Container */}
+          <div
+            ref={scrollRef}
+            className="flex py-8 overflow-x-hidden"
+            style={{ scrollBehavior: isPaused ? 'smooth' : 'auto' }}
+          >
+            {duplicatedCertificates.map((cert, index) => (
+              <CertificateCard
+                key={`${cert.id}-${index}`}
+                certificate={cert}
+                onClick={() => setSelectedCertificate(cert)}
+                isPaused={isPaused}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Stats Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="max-w-4xl mx-auto mt-20 px-4"
+        >
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[
+              { label: "Hackathons", value: "10+" },
+              { label: "Certifications", value: "15+" },
+              { label: "Workshops", value: "8+" },
+              { label: "Competitions", value: "12+" },
+            ].map((stat, index) => (
+              <motion.div
+                key={stat.label}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
+                className="text-center p-6 rounded-2xl bg-background/40 backdrop-blur-xl border border-border/30"
+              >
+                <div className="text-3xl md:text-4xl font-bold text-primary mb-2">
+                  {stat.value}
+                </div>
+                <div className="text-sm text-muted-foreground">{stat.label}</div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </main>
+
+      <Footer />
+
+      {/* Certificate Modal */}
+      <AnimatePresence>
+        {selectedCertificate && (
+          <CertificateModal
+            certificate={selectedCertificate}
+            onClose={() => setSelectedCertificate(null)}
+          />
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
+
+export default Certificates;
