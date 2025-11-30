@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Github, Linkedin, Twitter, Download, Terminal } from "lucide-react";
+import { Download, Terminal } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 
@@ -119,41 +119,6 @@ export const Hero = () => {
               <Download className="mr-2 h-5 w-5 group-hover:animate-bounce" />
               Download Resume
             </Button>
-            
-            <div className="flex gap-3">
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-glow hover:bg-card"
-                asChild
-              >
-                <a href="https://github.com" target="_blank" rel="noopener noreferrer">
-                  <Github className="h-5 w-5" />
-                </a>
-              </Button>
-              
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-glow hover:bg-card"
-                asChild
-              >
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
-                  <Linkedin className="h-5 w-5" />
-                </a>
-              </Button>
-              
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-glow hover:bg-card"
-                asChild
-              >
-                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-                  <Twitter className="h-5 w-5" />
-                </a>
-              </Button>
-            </div>
           </motion.div>
         </motion.div>
       </div>

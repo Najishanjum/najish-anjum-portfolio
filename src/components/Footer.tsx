@@ -20,7 +20,7 @@ export const Footer = () => {
           {/* Social Links */}
           <div className="flex gap-4">
             <a
-              href="https://github.com"
+              href="https://github.com/Najishanjum"
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 rounded-lg bg-card/50 border border-border/50 flex items-center justify-center hover:border-primary/50 hover:bg-primary/10 transition-all duration-300 group"
@@ -28,7 +28,7 @@ export const Footer = () => {
               <Github className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
             </a>
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/md-najish-anjum-044078328"
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 rounded-lg bg-card/50 border border-border/50 flex items-center justify-center hover:border-primary/50 hover:bg-primary/10 transition-all duration-300 group"
@@ -36,7 +36,7 @@ export const Footer = () => {
               <Linkedin className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
             </a>
             <a
-              href="https://twitter.com"
+              href="https://x.com/Najish_anjum?s=09"
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 rounded-lg bg-card/50 border border-border/50 flex items-center justify-center hover:border-primary/50 hover:bg-primary/10 transition-all duration-300 group"
