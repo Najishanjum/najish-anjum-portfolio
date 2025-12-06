@@ -42,6 +42,7 @@ All colors MUST be HSL.
     --neon-blue: 210 100% 65%;
     --neon-purple: 280 80% 60%;
     --neon-pink: 320 100% 65%;
+    --neon-green: 150 100% 50%;
     
     --grid-color: 220 15% 15%;
   }
