@@ -103,3 +103,16 @@ All colors MUST be HSL.
                 0 0 40px hsl(var(--neon-blue) / 0.05);
   }
 }
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+}

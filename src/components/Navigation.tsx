@@ -12,6 +12,7 @@ const navItems = [
   { label: "Certificates", href: "/certificates" },
   { label: "Hackathons", href: "/hackathons" },
   { label: "Expertise", href: "#expertise" },
+  { label: "Testimonials", href: "#testimonials" },
   { label: "Contact", href: "#contact" },
 ];
 
